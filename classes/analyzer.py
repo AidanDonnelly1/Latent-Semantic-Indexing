@@ -24,13 +24,12 @@ class Analyzer:
             os.makedirs(dir, exist_ok=True)
     
     def plot_comparison(self, query, lex_scores, lsi_scores, lex_time, lsi_time):
-        """Generate and save comparison plot with black and gold bars only"""
         plt.figure(figsize=(12, 6))
         
         plt.subplot(1, 2, 1)
         x = np.arange(3)  # Top 3 results
         width = 0.35
-        plt.bar(x - width/2, lex_scores[:3], width, label='Lexical Matching', color=self.GOLD)
+        plt.bar(x - width/2, lex_scores[:3], width, label='TF-IDF', color=self.GOLD)
         plt.bar(x + width/2, lsi_scores[:3], width, label='LSI', color=self.BLACK)
         plt.xlabel('Top Results')
         plt.ylabel('Cosine Similarity')
@@ -95,7 +94,7 @@ class Analyzer:
         plt.close()
     
     def generate_natural_queries(self):
-        """Generate 50 natural language search queries"""
+        print("Generate 50 natural language search queries")
         return [
             "How does NASA prepare for space shuttle launches?",
             "Common driver issues in Windows operating systems",
